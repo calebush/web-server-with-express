@@ -5,6 +5,7 @@ const fs = require('fs')
 const port = process.env.PORT || 5000;
 var app = express();
 app.set('view engine', 'hbs')
+hbs.registerPartials(__dirname + '/views/partials')
 app.use(express.static(__dirname + '/public'))
 
 app.use((req,res,next)=>{
@@ -37,6 +38,12 @@ app.get('/about',(req, res)=>{
     res.render('about.hbs', {
         pageTitle:'Welcome About Page',
         currentYear: new Date().getFullYear(),
+    })
+})
+
+app.get('/projects',(req, res)=>{
+    res.render('projects.hbs', {
+        pageTitle:'Projects Available ',
     })
 })
 
